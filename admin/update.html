@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Update — ZIFX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>body{font-family:Poppins,sans-serif}</style>
+</head>
+
+<body class="bg-[#0D1A1E] text-white">
+
+<div id="sidebar"></div>
+
+<main class="ml-64 p-8 max-w-xl">
+  <h1 class="text-xl font-semibold mb-6">Daily Profit Update</h1>
+
+  <div class="border border-white/10 rounded-xl p-6 space-y-4">
+
+    <div>
+      <label class="text-sm text-gray-400">Date</label>
+      <input id="date" type="date"
+        class="w-full px-4 py-3 rounded bg-[#121C27]">
+    </div>
+
+    <div>
+      <label class="text-sm text-gray-400">Profit Amount (RM)</label>
+      <input id="profit" type="number"
+        class="w-full px-4 py-3 rounded bg-[#121C27]"
+        placeholder="Example: 1200">
+    </div>
+
+    <div>
+      <label class="text-sm text-gray-400">Profit Percentage (%)</label>
+      <input id="percent" type="number"
+        class="w-full px-4 py-3 rounded bg-[#121C27]"
+        placeholder="Example: 1.2">
+    </div>
+
+    <button onclick="saveUpdate()"
+      class="w-full bg-[#00A7A6] py-3 rounded font-semibold text-[#0D1A1E]">
+      Save Update
+    </button>
+  </div>
+</main>
+
+<script>
+fetch("partials/sidebar.html")
+  .then(r=>r.text())
+  .then(h=>sidebar.innerHTML=h);
+
+// AUTH
+const user = JSON.parse(localStorage.getItem("currentUser"));
+if (!user || user.role !== "admin") location.href = "../login.html";
+
+function saveUpdate() {
+  const date = dateInput.value || new Date().toISOString().slice(0,10);
+  const profit = Number(document.getElementById("profit").value);
+  const percent = Number(document.getElementById("percent").value);
+
+  if (!profit) {
+    alert("Enter profit amount");
+    return;
+  }
+
+  const daily = JSON.parse(localStorage.getItem("daily_profit")) || [];
+  daily.push({ date, profit, percent });
+
+  localStorage.setItem("daily_profit", JSON.stringify(daily));
+
+  alert("Daily profit updated");
+  location.reload();
+}
+</script>
+
+</body>
+</html>

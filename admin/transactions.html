@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Admin — Transactions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>body{font-family:Poppins,sans-serif}</style>
+</head>
+
+<body class="bg-[#0D1A1E] text-white">
+
+<div id="sidebar"></div>
+
+<main class="ml-64 p-8">
+  <h1 class="text-xl font-semibold mb-6">Pending Deposits</h1>
+
+  <table class="w-full text-sm bg-[#121C27] rounded">
+    <thead class="text-[#7D8895]">
+      <tr>
+        <th class="p-3 text-left">User</th>
+        <th>Amount</th>
+        <th>Plan</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="txTable"></tbody>
+  </table>
+</main>
+
+<script>
+fetch("partials/sidebar.html")
+  .then(r=>r.text())
+  .then(h=>sidebar.innerHTML=h);
+
+const admin = JSON.parse(localStorage.getItem("currentUser"));
+if (!admin || admin.role !== "admin") {
+  location.href = "../login.html";
+}
+
+let txs = JSON.parse(localStorage.getItem("zifx_transactions")) || [];
+let users = JSON.parse(localStorage.getItem("zifx_users")) || [];
+
+const table = document.getElementById("txTable");
+
+function render() {
+  table.innerHTML = "";
+  txs.filter(t => t.status === "pending").forEach(tx => {
+    const tr = document.createElement("tr");
+    tr.className = "border-t border-white/5";
+    tr.innerHTML = `
+      <td class="p-3">${tx.userName}</td>
+      <td>RM ${tx.amount.toLocaleString()}</td>
+      <td>${tx.plan}</td>
+      <td class="text-yellow-400">${tx.status}</td>
+      <td>
+        <button onclick="approve('${tx.id}')"
+          class="bg-green-500 text-black px-3 py-1 rounded">
+          Approve
+        </button>
+      </td>`;
+    table.appendChild(tr);
+  });
+}
+
+function approve(id) {
+  const tx = txs.find(t => t.id === id);
+  if (!tx) return;
+
+  tx.status = "approved";
+
+  const user = users.find(u => u.id === tx.userId);
+  if (user) {
+    user.capital = (user.capital || 0) + tx.amount;
+  }
+
+  localStorage.setItem("zifx_transactions", JSON.stringify(txs));
+  localStorage.setItem("zifx_users", JSON.stringify(users));
+
+  alert("Deposit approved");
+  render();
+}
+
+render();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact — ZIFX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>body { font-family: Poppins, sans-serif }</style>
+
+  <script>
+    let currentLang = localStorage.getItem("zifx_lang") || "en";
+
+    const t = {
+      en: {
+        title: "Contact Us",
+        subtitle: "Clear communication builds trust.",
+        intro: "If you have questions about ZIFX, our structure, or how the platform works, feel free to reach out. We believe transparency starts with open communication.",
+
+        c1t: "General Enquiries",
+        c1: "For general questions about ZIFX, platform structure, or onboarding process.",
+
+        c2t: "Investor Support",
+        c2: "If you are an existing investor and require account-related assistance.",
+
+        c3t: "Business & Partnership",
+        c3: "For partnership discussions, strategic collaboration, or media enquiries.",
+
+        note: "ZIFX does not provide investment advice. All responses are for informational purposes only."
+      },
+
+      bm: {
+        title: "Hubungi Kami",
+        subtitle: "Komunikasi yang jelas membina kepercayaan.",
+        intro: "Jika anda mempunyai soalan tentang ZIFX, struktur platform, atau cara sistem berfungsi, sila hubungi kami. Ketelusan bermula dengan komunikasi terbuka.",
+
+        c1t: "Pertanyaan Umum",
+        c1: "Untuk soalan umum berkaitan ZIFX, struktur platform, atau proses pendaftaran.",
+
+        c2t: "Sokongan Pelabur",
+        c2: "Untuk pelabur sedia ada yang memerlukan bantuan berkaitan akaun.",
+
+        c3t: "Kerjasama & Perniagaan",
+        c3: "Untuk perbincangan kerjasama, kolaborasi strategik, atau pertanyaan media.",
+
+        note: "ZIFX tidak memberikan nasihat pelaburan. Semua maklum balas adalah untuk tujuan maklumat sahaja."
+      }
+    };
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem("zifx_lang", lang);
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        el.innerText = t[lang][el.dataset.i18n];
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => setLang(currentLang));
+  </script>
+</head>
+
+<body class="bg-[#0D1A1E] text-white">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 w-full z-50 border-b border-white/5 backdrop-blur-md bg-[#0D1A1E]/80">
+  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="text-xl font-semibold text-white">
+      ZIF<span class="text-[#00A7A6]">X</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm text-[#C9D1D9]">
+      <a href="why.html" class="hover:text-white">Why ZIFX</a>
+      <a href="index.html#plans" class="hover:text-white">Plans</a>
+      <a href="security.html" class="hover:text-white">Security</a>
+      <a href="contact.html" class="text-white">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-4 text-sm text-[#C9D1D9]">
+      <button onclick="setLang('en')" class="hover:text-white">EN</button>
+      <button onclick="setLang('bm')" class="hover:text-white">BM</button>
+      <a href="login.html" class="hover:text-white ml-4">Login</a>
+      <a href="register.html"
+         class="bg-[#00A7A6] hover:bg-[#7ED957] text-[#0D1A1E]
+                px-4 py-2 rounded-md font-semibold transition">
+        Get Started
+      </a>
+    </div>
+  </nav>
+</header>
+
+<!-- spacer -->
+<div class="h-16"></div>
+
+<!-- CONTENT -->
+<main class="max-w-4xl mx-auto px-6 pt-20">
+
+  <h1 class="text-4xl font-bold mb-4" data-i18n="title"></h1>
+  <p class="text-[#00A7A6] mb-6" data-i18n="subtitle"></p>
+  <p class="text-[#C9D1D9] mb-12" data-i18n="intro"></p>
+
+  <div class="grid md:grid-cols-3 gap-6">
+
+    <div class="border border-white/10 rounded-xl p-6">
+      <h3 class="text-xl font-semibold mb-2" data-i18n="c1t"></h3>
+      <p class="text-[#C9D1D9]" data-i18n="c1"></p>
+      <p class="mt-4 text-sm text-[#7D8895]">
+        Email: support@zifx.com
+      </p>
+    </div>
+
+    <div class="border border-white/10 rounded-xl p-6">
+      <h3 class="text-xl font-semibold mb-2" data-i18n="c2t"></h3>
+      <p class="text-[#C9D1D9]" data-i18n="c2"></p>
+      <p class="mt-4 text-sm text-[#7D8895]">
+        Email: investors@zifx.com
+      </p>
+    </div>
+
+    <div class="border border-white/10 rounded-xl p-6">
+      <h3 class="text-xl font-semibold mb-2" data-i18n="c3t"></h3>
+      <p class="text-[#C9D1D9]" data-i18n="c3"></p>
+      <p class="mt-4 text-sm text-[#7D8895]">
+        Email: partners@zifx.com
+      </p>
+    </div>
+
+  </div>
+
+  <p class="mt-12 text-sm text-[#7D8895]" data-i18n="note"></p>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 mt-32">
+  <div class="max-w-7xl mx-auto px-6 py-10 text-sm text-[#7D8895]">
+    © 2025 ZIFX. Built for structured trading, not gambling.
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ZIFX — Stop Trading Time for Money</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>body { font-family: Poppins, sans-serif }</style>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    if (user) {
+      document.addEventListener("DOMContentLoaded", () => {
+        const auth = document.getElementById("auth-area");
+        if (auth) {
+          auth.innerHTML = `
+            <span class="text-sm text-gray-400 mr-4">${user.name}</span>
+            <button onclick="logout()" class="text-red-400">Logout</button>
+          `;
+        }
+      });
+    }
+  </script>
+</head>
+
+<body class="bg-[#0D1A1E] text-white">
+
+<div id="site-header"></div>
+
+<main class="max-w-7xl mx-auto px-6 pt-20">
+
+  <!-- HERO -->
+  <h1 class="text-5xl font-bold leading-tight">
+    Stop Trading Time for Money.<br>
+    <span class="text-[#00A7A6]">Trade With Structure, Not Emotion.</span>
+  </h1>
+
+  <p class="mt-6 max-w-xl text-[#C9D1D9]">
+    ZIFX is a performance-based trading platform built for investors who want
+    exposure to real trading without managing charts, emotions, or execution.
+    We earn only when you earn.
+  </p>
+
+  <div class="mt-10 flex gap-4">
+    <a href="#plans" class="bg-[#00A7A6] text-[#0D1A1E] px-6 py-3 rounded-md font-semibold">
+      View Performance Structure
+    </a>
+    <a href="#how" class="border border-white/10 px-6 py-3 rounded-md text-[#C9D1D9]">
+      How It Works
+    </a>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="mt-32 max-w-3xl">
+    <h2 class="text-3xl font-bold mb-6">How ZIFX Works</h2>
+
+    <p class="text-[#C9D1D9] mb-4">
+      ZIFX is not a fixed-return investment program.
+      Your capital is traded using structured, risk-controlled strategies
+      in the forex and cryptocurrency markets.
+    </p>
+
+    <p class="text-[#C9D1D9] mb-4">
+      At the end of each trading cycle, we look at the actual account balance.
+      If there is profit, it is shared.
+      If there is no profit, no fee is charged.
+    </p>
+
+    <p class="text-[#C9D1D9]">
+      ZIFX does not earn from deposits, subscriptions, or hidden charges.
+      Our incentive is fully aligned with trader performance.
+    </p>
+  </section>
+
+  <!-- PERFORMANCE FEE TIERS -->
+  <section id="plans" class="mt-32 max-w-4xl">
+    <h2 class="text-3xl font-bold mb-8">Performance Fee Structure</h2>
+
+    <p class="text-[#C9D1D9] mb-10 max-w-2xl">
+      ZIFX applies a performance-based fee model.
+      Fees are calculated only from actual trading profits.
+      The larger the trading capital, the lower the platform fee.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="border border-white/10 rounded-xl p-6">
+        <h3 class="text-xl font-semibold mb-2">Capital Tier A</h3>
+        <p class="text-sm text-[#C9D1D9] mb-4">RM1,000 – RM4,999</p>
+        <p class="text-[#00A7A6] text-2xl font-bold mb-2">20% Fee</p>
+        <p class="text-sm text-[#C9D1D9]">
+          Charged only on net trading profit.
+          No profit, no fee.
+        </p>
+      </div>
+
+      <div class="border border-white/10 rounded-xl p-6">
+        <h3 class="text-xl font-semibold mb-2">Capital Tier B</h3>
+        <p class="text-sm text-[#C9D1D9] mb-4">RM5,000 – RM9,999</p>
+        <p class="text-[#00A7A6] text-2xl font-bold mb-2">15% Fee</p>
+        <p class="text-sm text-[#C9D1D9]">
+          Lower platform fee for higher capital allocation.
+        </p>
+      </div>
+
+      <div class="border border-white/10 rounded-xl p-6">
+        <h3 class="text-xl font-semibold mb-2">Capital Tier C</h3>
+        <p class="text-sm text-[#C9D1D9] mb-4">RM10,000 & Above</p>
+        <p class="text-[#00A7A6] text-2xl font-bold mb-2">10% Fee</p>
+        <p class="text-sm text-[#C9D1D9]">
+          Designed for serious capital deployment with aligned incentives.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CORE PRINCIPLE -->
+  <section class="mt-32 max-w-3xl">
+    <h2 class="text-3xl font-bold mb-6">Our Core Principle</h2>
+
+    <p class="text-[#C9D1D9] text-lg">
+      ZIFX earns only when traders earn.
+      If trading performance is negative, no performance fee is charged.
+      This ensures transparency, fairness, and long-term sustainability.
+    </p>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script>
+  async function loadPartial(id, file) {
+    const el = document.getElementById(id);
+    const res = await fetch(file);
+    el.innerHTML = await res.text();
+  }
+  loadPartial("site-header", "partials/header.html");
+  loadPartial("site-footer", "partials/footer.html");
+</script>
+
+</body>
+</html>

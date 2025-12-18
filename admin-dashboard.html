@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZIFX — Admin Dashboard</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Poppins'] },
+          colors: {
+            brand: { primary: '#00A7A6' },
+            bg: { primary: '#0D1A1E', card: '#182430' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-bg-primary text-white min-h-screen flex">
+
+<script>
+  if (localStorage.getItem('zifixAdminAuth') !== 'true') {
+    window.location.href = 'admin-login.html'
+  }
+</script>
+
+<!-- SIDEBAR -->
+<aside class="w-64 bg-bg-card p-6 hidden md:block">
+  <h2 class="text-xl font-semibold mb-8">ZIFX Admin</h2>
+  <nav class="space-y-4 text-sm">
+    <a class="block text-brand-primary">Dashboard</a>
+    <a class="block text-white/70">Users</a>
+    <a class="block text-white/70">Plans</a>
+    <a class="block text-white/70">Transactions</a>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="flex-1 p-8">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-2xl font-semibold">Admin Dashboard</h1>
+    <button
+      onclick="localStorage.removeItem('zifixAdminAuth');location.href='admin-login.html'"
+      class="px-4 py-2 bg-red-500 rounded">
+      Logout
+    </button>
+  </div>
+
+  <!-- STATS -->
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="bg-bg-card p-6 rounded-lg border border-white/10">
+      <p class="text-sm text-white/60">Total Users</p>
+      <h2 class="text-3xl font-semibold mt-2">128</h2>
+    </div>
+
+    <div class="bg-bg-card p-6 rounded-lg border border-white/10">
+      <p class="text-sm text-white/60">Active Plans</p>
+      <h2 class="text-3xl font-semibold mt-2">42</h2>
+    </div>
+
+    <div class="bg-bg-card p-6 rounded-lg border border-white/10">
+      <p class="text-sm text-white/60">Total Volume</p>
+      <h2 class="text-3xl font-semibold mt-2">$1.2M</h2>
+    </div>
+  </div>
+</main>
+<body data-page="admin">
+<script src="auth-guard.js"></script>
+
+</body>
+</html>
+

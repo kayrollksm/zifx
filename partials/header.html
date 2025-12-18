@@ -1,0 +1,52 @@
+<!-- ================= HEADER ================= -->
+<header class="fixed top-0 inset-x-0 z-50 bg-[#0D1A1E]/90 backdrop-blur border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
+    <a href="index.html" class="text-xl font-bold tracking-wide text-white">
+      ZIFX
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm text-[#C9D1D9]">
+      <a href="background.html" class="hover:text-white">ZIFX Background</a>
+      <a href="vision.html" class="hover:text-white">Vision & Mission</a>
+      <a href="how.html" class="hover:text-white">How ZIFX Works</a>
+
+      <div class="relative group">
+        <button class="flex items-center gap-1 hover:text-white">
+          Why Choose ZIFX
+          <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+
+        <div
+          class="absolute left-0 mt-3 w-72 rounded-xl bg-[#121C27] border border-white/10
+                 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+
+          <a href="strategy.html" class="block px-5 py-3 hover:bg-white/5">Trading Strategy Overview</a>
+          <a href="plans.html" class="block px-5 py-3 hover:bg-white/5">Investment Plans</a>
+          <a href="risk.html" class="block px-5 py-3 hover:bg-white/5">Risk Management</a>
+          <a href="faq.html" class="block px-5 py-3 hover:bg-white/5">FAQ</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hidden md:flex items-center gap-4">
+      <a href="login.html" class="text-[#C9D1D9] hover:text-white">Login</a>
+      <a href="register.html"
+         class="bg-[#00A7A6] text-[#0D1A1E] px-4 py-2 rounded-md font-semibold">
+        Get Started
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= LIVE MARKET TICKER ================= -->
+<div class="sticky top-16 z-40 bg-[#0B151A] border-b border-white/10">
+  <iframe
+    src="https://www.tradingview.com/embed-widget/ticker-tape/?locale=en&colorTheme=dark&isTransparent=true&symbols=%5B%7B%22proName%22%3A%22FX_IDC%3AEURUSD%22%2C%22title%22%3A%22EUR%2FUSD%22%7D%2C%7B%22proName%22%3A%22FX_IDC%3AGBPUSD%22%2C%22title%22%3A%22GBP%2FUSD%22%7D%2C%7B%22proName%22%3A%22FX_IDC%3AUSDJPY%22%2C%22title%22%3A%22USD%2FJPY%22%7D%2C%7B%22proName%22%3A%22BINANCE%3ABTCUSDT%22%2C%22title%22%3A%22BTC%2FUSDT%22%7D%2C%7B%22proName%22%3A%22BINANCE%3AETHUSDT%22%2C%22title%22%3A%22ETH%2FUSDT%22%7D%2C%7B%22proName%22%3A%22OANDA%3AXAUUSD%22%2C%22title%22%3A%22GOLD%22%7D%2C%7B%22proName%22%3A%22NASDAQ%3ANDX%22%2C%22title%22%3A%22NASDAQ%22%7D%5D"
+    style="width:100%;height:44px;border:none;"
+    loading="lazy">
+  </iframe>
+</div>

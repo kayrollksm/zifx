@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Users — ZIFX Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: Poppins, sans-serif; }
+  </style>
+</head>
+
+<body class="bg-[#0D1A1E] text-white">
+
+<div class="flex min-h-screen">
+  <div id="sidebar"></div>
+
+  <div class="ml-64 flex-1">
+    <header class="border-b border-white/5 px-6 h-14 flex items-center justify-between">
+      <span class="font-semibold">Users</span>
+      <span class="text-sm text-[#7D8895]">Manage Registered Users</span>
+    </header>
+
+    <main class="px-6 py-8 space-y-6">
+
+      <!-- TABLE -->
+      <div class="border border-white/10 rounded-xl overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-white/5 text-[#7D8895]">
+            <tr>
+              <th class="px-4 py-3 text-left">Name</th>
+              <th class="px-4 py-3 text-left">Email</th>
+              <th class="px-4 py-3 text-left">Role</th>
+              <th class="px-4 py-3 text-left">Capital (RM)</th>
+              <th class="px-4 py-3 text-left">Status</th>
+              <th class="px-4 py-3 text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody id="userTable"></tbody>
+        </table>
+      </div>
+
+      <p class="text-xs text-[#7D8895]">
+        This page shows real registered users (prototype mode).
+      </p>
+
+    </main>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<script>
+  fetch("partials/sidebar.html")
+    .then(r => r.text())
+    .then(t => document.getElementById("sidebar").innerHTML = t);
+</script>
+
+<!-- LOGIC -->
+<script>
+  const users = JSON.parse(localStorage.getItem("zifx_users")) || [];
+  const table = document.getElementById("userTable");
+
+  function renderUsers() {
+    table.innerHTML = "";
+
+    users.forEach((u, i) => {
+      const tr = document.createElement("tr");
+      tr.className = "border-t border-white/5";
+
+      const status = (u.capital || 0) > 0
+        ? `<span class="text-green-400">Active</span>`
+        : `<span class="text-[#7D8895]">Inactive</span>`;
+
+      tr.innerHTML = `
+        <td class="px-4 py-3">${u.name}</td>
+        <td class="px-4 py-3">${u.email}</td>
+        <td class="px-4 py-3 capitalize">${u.role}</td>
+        <td class="px-4 py-3">RM ${(u.capital || 0).toLocaleString()}</td>
+        <td class="px-4 py-3">${status}</td>
+        <td class="px-4 py-3 text-right space-x-2">
+          <button onclick="viewUser(${i})"
+            class="text-blue-400 hover:underline text-xs">View</button>
+          <button onclick="editUser(${i})"
+            class="text-yellow-400 hover:underline text-xs">Edit</button>
+          <button onclick="deleteUser(${i})"
+            class="text-red-400 hover:underline text-xs">Remove</button>
+        </td>
+      `;
+      table.appendChild(tr);
+    });
+  }
+
+  function viewUser(i) {
+    const u = users[i];
+    alert(
+      `USER DETAIL\n\n` +
+      `Name: ${u.name}\n` +
+      `Email: ${u.email}\n` +
+      `Role: ${u.role}\n` +
+      `Capital: RM ${(u.capital || 0).toLocaleString()}`
+    );
+  }
+
+  function editUser(i) {
+    const u = users[i];
+
+    const name = prompt("Name:", u.name);
+    if (name === null) return;
+
+    const role = prompt("Role (admin/user):", u.role);
+    if (role === null) return;
+
+    const capital = prompt("Capital (RM):", u.capital || 0);
+    if (capital === null) return;
+
+    u.name = name;
+    u.role = role;
+    u.capital = Number(capital);
+
+    localStorage.setItem("zifx_users", JSON.stringify(users));
+    renderUsers();
+  }
+
+  function deleteUser(i) {
+    if (!confirm("Are you sure to remove this user?")) return;
+    users.splice(i, 1);
+    localStorage.setItem("zifx_users", JSON.stringify(users));
+    renderUsers();
+  }
+
+  renderUsers();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Why ZIFX — Structured Trading Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>body { font-family: Poppins, sans-serif }</style>
+
+  <script>
+    let currentLang = localStorage.getItem("zifx_lang") || "en";
+
+    const t = {
+      en: {
+        title: "Why ZIFX",
+        subtitle: "Built for structured trading, not gambling.",
+        intro: "ZIFX was created to solve one core problem in trading: inconsistency caused by emotion, poor structure, and unrealistic expectations.",
+
+        p1t: "Performance Comes First",
+        p1: "ZIFX does not sell promises or fixed returns. The platform operates purely on real trading performance. If there is profit, it is shared. If there is no profit, no fee is charged.",
+
+        p2t: "Aligned Interests",
+        p2: "ZIFX earns only when investors earn. This ensures that the platform and investors are always on the same side of the outcome.",
+
+        p3t: "Structured, Risk-Controlled Trading",
+        p3: "Every strategy is built around risk control, capital protection, and disciplined execution. ZIFX avoids aggressive or gambling-style trading.",
+
+        p4t: "Transparent & Trackable",
+        p4: "All results are based on actual account balances. There are no hidden calculations, artificial numbers, or manual adjustments.",
+
+        p5t: "Designed for Long-Term Capital Growth",
+        p5: "ZIFX is not a get-rich-quick system. It is designed for investors who value sustainability, structure, and consistency over hype.",
+
+        p6t: "Fair Fee Structure",
+        p6: "The larger the capital allocation, the lower the platform fee. Fees are calculated only from net trading profit."
+      },
+
+      bm: {
+        title: "Kenapa ZIFX",
+        subtitle: "Dibina untuk trading berstruktur, bukan berjudi.",
+        intro: "ZIFX diwujudkan untuk menyelesaikan satu masalah utama dalam trading: ketidakkonsistenan akibat emosi, tiada struktur, dan jangkaan yang tidak realistik.",
+
+        p1t: "Prestasi Diutamakan",
+        p1: "ZIFX tidak menjual janji atau pulangan tetap. Platform ini beroperasi sepenuhnya berdasarkan prestasi trading sebenar. Jika ada untung, ia dikongsi. Jika tiada untung, tiada caj dikenakan.",
+
+        p2t: "Kepentingan Selari",
+        p2: "ZIFX hanya mendapat bayaran apabila pelabur untung. Ini memastikan platform dan pelabur sentiasa berada di pihak yang sama.",
+
+        p3t: "Trading Berstruktur & Kawalan Risiko",
+        p3: "Setiap strategi dibina dengan kawalan risiko yang jelas, fokus kepada perlindungan modal dan disiplin pelaksanaan. ZIFX mengelakkan trading agresif atau berbentuk judi.",
+
+        p4t: "Telus & Boleh Jejak",
+        p4: "Semua keputusan berdasarkan baki akaun sebenar. Tiada kiraan tersembunyi, nombor palsu, atau manipulasi.",
+
+        p5t: "Direka Untuk Jangka Panjang",
+        p5: "ZIFX bukan sistem cepat kaya. Ia dibina untuk pelabur yang menghargai kestabilan, struktur, dan konsistensi berbanding hype.",
+
+        p6t: "Struktur Caj Yang Adil",
+        p6: "Semakin besar modal, semakin rendah caj platform. Caj hanya dikira daripada keuntungan trading sebenar."
+      }
+    };
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem("zifx_lang", lang);
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        el.innerText = t[lang][el.dataset.i18n];
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => setLang(currentLang));
+  </script>
+</head>
+
+<body class="bg-[#0D1A1E] text-white">
+
+<!-- HEADER -->
+<header class="fixed top-0 left-0 w-full z-50 border-b border-white/5 backdrop-blur-md bg-[#0D1A1E]/80">
+  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="text-xl font-semibold text-white">
+      ZIF<span class="text-[#00A7A6]">X</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm text-[#C9D1D9]">
+      <a href="why.html" class="text-white">Why ZIFX</a>
+      <a href="index.html#plans" class="hover:text-white">Plans</a>
+      <a href="#" class="hover:text-white">Security</a>
+      <a href="#" class="hover:text-white">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-4 text-sm text-[#C9D1D9]">
+      <button onclick="setLang('en')" class="hover:text-white">EN</button>
+      <button onclick="setLang('bm')" class="hover:text-white">BM</button>
+      <a href="login.html" class="hover:text-white ml-4">Login</a>
+      <a href="register.html"
+         class="bg-[#00A7A6] hover:bg-[#7ED957] text-[#0D1A1E]
+                px-4 py-2 rounded-md font-semibold transition">
+        Get Started
+      </a>
+    </div>
+  </nav>
+</header>
+
+<!-- spacer -->
+<div class="h-16"></div>
+
+<!-- CONTENT -->
+<main class="max-w-4xl mx-auto px-6 pt-20">
+
+  <h1 class="text-4xl font-bold mb-4" data-i18n="title"></h1>
+  <p class="text-[#00A7A6] mb-6" data-i18n="subtitle"></p>
+  <p class="text-[#C9D1D9] mb-12" data-i18n="intro"></p>
+
+  <div class="space-y-8">
+
+    <div>
+      <h3 class="text-xl font-semibold mb-2" data-i18n="p1t"></h3>
+      <p class="text-[#C9D1D9]" data-i18n="p1"></p>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-semibold mb-2" data-i18n="p2t"></h3>
+      <p class="text-[#C9D1D9]" data-i18n="p2"></p>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-semibold mb-2" data-i18n="p3t"></h3>
+      <p class="text-[#C9D1D9]" data-i18n="p3"></p>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-semibold mb-2" data-i18n="p4t"></h3>
+      <p class="text-[#C9D1D9]" data-i18n="p4"></p>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-semibold mb-2" data-i18n="p5t"></h3>
+      <p class="text-[#C9D1D9]" data-i18n="p5"></p>
+    </div>
+
+    <div>
+      <h3 class="text-xl font-semibold mb-2" data-i18n="p6t"></h3>
+      <p class="text-[#C9D1D9]" data-i18n="p6"></p>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 mt-32">
+  <div class="max-w-7xl mx-auto px-6 py-10 text-sm text-[#7D8895]">
+    © 2025 ZIFX. Built for structured trading, not gambling.
+  </div>
+</footer>
+
+</body>
+</html>

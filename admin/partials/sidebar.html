@@ -1,0 +1,53 @@
+<aside class="fixed left-0 top-0 w-64 h-screen bg-[#0B1418] border-r border-white/5 flex flex-col">
+  <!-- BRAND -->
+  <div class="px-6 h-14 flex items-center border-b border-white/5">
+    <span class="font-bold text-lg">ZIFX</span>
+  </div>
+
+  <!-- MENU -->
+  <nav class="flex-1 px-4 py-6 space-y-2 text-sm">
+
+    <!-- ADMIN MENU -->
+    <a href="index.html"
+       class="block px-3 py-2 rounded hover:bg-white/5">
+      Dashboard
+    </a>
+
+    <a href="users.html"
+       class="block px-3 py-2 rounded hover:bg-white/5">
+      Users
+    </a>
+
+    <a href="transactions.html"
+       class="block px-3 py-2 rounded hover:bg-white/5">
+      Transactions
+    </a>
+
+    <!-- 🔥 NEW TAB -->
+    <a href="update.html"
+       class="block px-3 py-2 rounded hover:bg-white/5">
+      Update
+    </a>
+
+    <a href="settings.html"
+       class="block px-3 py-2 rounded hover:bg-white/5">
+      Settings
+    </a>
+
+  </nav>
+
+  <!-- LOGOUT -->
+  <div class="px-4 py-4 border-t border-white/5">
+    <button onclick="logout()"
+      class="w-full bg-red-500/10 text-red-400 py-2 rounded hover:bg-red-500/20 text-sm">
+      Logout
+    </button>
+  </div>
+</aside>
+
+<script>
+function logout() {
+  localStorage.removeItem("currentUser");
+  location.href = "../login.html";
+}
+</script>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard — ZIFX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body { font-family: Poppins, sans-serif; }
+  </style>
+</head>
+
+<body class="bg-[#0D1A1E] text-white">
+
+<div class="flex min-h-screen">
+  <div id="sidebar"></div>
+
+  <div class="ml-64 flex-1">
+
+    <header class="border-b border-white/5 px-6 h-14 flex items-center justify-between">
+      <span class="font-semibold text-lg">Admin Dashboard</span>
+      <span class="text-sm text-[#7D8895]">Admin</span>
+    </header>
+
+    <main class="px-6 py-8 space-y-8">
+
+      <!-- GRAF -->
+      <div class="border border-white/10 rounded-xl p-6">
+        <h3 class="font-semibold mb-4">Daily Trading Profit (RM)</h3>
+        <canvas id="profitChart" height="100"></canvas>
+      </div>
+
+      <!-- STATS -->
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="border border-white/10 rounded-xl p-6">
+          <p class="text-sm text-[#7D8895]">Total Users</p>
+          <p id="totalUsers" class="text-2xl font-bold mt-1">0</p>
+        </div>
+
+        <div class="border border-white/10 rounded-xl p-6">
+          <p class="text-sm text-[#7D8895]">Active Accounts</p>
+          <p id="activeAccounts" class="text-2xl font-bold mt-1">0</p>
+        </div>
+
+        <div class="border border-white/10 rounded-xl p-6">
+          <p class="text-sm text-[#7D8895]">Total Capital</p>
+          <p id="totalCapital" class="text-2xl font-bold mt-1">RM 0</p>
+        </div>
+
+        <div class="border border-white/10 rounded-xl p-6">
+          <p class="text-sm text-[#7D8895]">Platform Revenue</p>
+          <p id="platformRevenue" class="text-2xl font-bold mt-1 text-green-400">RM 0</p>
+        </div>
+      </div>
+
+      <!-- RECENT ACTIVITIES -->
+      <div class="border border-white/10 rounded-xl p-6">
+        <h3 class="font-semibold mb-4">Recent Activities</h3>
+
+        <div id="activityList" class="space-y-3 text-sm"></div>
+
+        <p class="text-xs text-[#7D8895] mt-4">
+          All activities are shown in real-time (prototype).
+        </p>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<script>
+  fetch("partials/sidebar.html")
+    .then(r => r.text())
+    .then(html => sidebar.innerHTML = html);
+</script>
+
+<!-- LOGIC -->
+<script>
+  const users = JSON.parse(localStorage.getItem("zifx_users")) || [];
+  const dailyProfit = JSON.parse(localStorage.getItem("daily_profit")) || [];
+  const activities = JSON.parse(localStorage.getItem("activities")) || [];
+
+  const userList = users.filter(u => u.role === "user");
+  const activeUsers = userList.filter(u => (u.capital || 0) > 0);
+  const totalCapital = userList.reduce((s,u)=>s+(u.capital||0),0);
+  const platformRevenue = dailyProfit.reduce((s,d)=>s+d.profit,0);
+
+  totalUsers.innerText = userList.length;
+  activeAccounts.innerText = activeUsers.length;
+  totalCapitalEl = document.getElementById("totalCapital");
+  totalCapitalEl.innerText = `RM ${totalCapital.toLocaleString()}`;
+  platformRevenueEl = document.getElementById("platformRevenue");
+  platformRevenueEl.innerText = `RM ${platformRevenue.toLocaleString()}`;
+
+  // GRAF
+  new Chart(document.getElementById("profitChart"), {
+    type: "line",
+    data: {
+      labels: dailyProfit.map(d => d.date),
+      datasets: [{
+        data: dailyProfit.map(d => d.profit),
+        borderColor: "#00A7A6",
+        backgroundColor: "rgba(0,167,166,0.15)",
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: { plugins:{legend:{display:false}} }
+  });
+
+  // ACTIVITIES
+  const statusColor = s => ({
+    pending: "text-yellow-400",
+    approved: "text-green-400",
+    success: "text-green-400",
+    processing: "text-blue-400",
+    rejected: "text-red-400"
+  }[s] || "text-gray-400");
+
+  const list = document.getElementById("activityList");
+
+  activities.slice(-10).reverse().forEach((a, i) => {
+    const div = document.createElement("div");
+    div.className = "flex justify-between items-center border-b border-white/5 pb-2";
+
+    div.innerHTML = `
+      <div>
+        <p class="font-medium capitalize">${a.type} — RM ${a.amount.toLocaleString()}</p>
+        <p class="text-xs text-[#7D8895]">${a.user} · ${a.date}</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="${statusColor(a.status)} capitalize">${a.status}</span>
+        <select class="bg-[#121C27] text-xs rounded px-2 py-1"
+          onchange="updateStatus(${i}, this.value)">
+          <option>Update</option>
+          <option value="processing">Processing</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+        </select>
+      </div>
+    `;
+    list.appendChild(div);
+  });
+
+  function updateStatus(index, status) {
+    activities[activities.length - 1 - index].status = status;
+    localStorage.setItem("activities", JSON.stringify(activities));
+    location.reload();
+  }
+</script>
+
+</body>
+</html>

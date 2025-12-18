@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ZIFX Background</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: Poppins, sans-serif; }
+  </style>
+</head>
+
+<body class="bg-[#0D1A1E] text-white">
+
+<!-- HEADER -->
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="relative h-[70vh] flex items-center">
+  <div class="absolute inset-0">
+    <img src="assets/bg1.png" class="w-full h-full object-cover opacity-30" />
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0D1A1E]/80 to-[#0D1A1E]"></div>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-6">
+    <h1 class="text-5xl font-bold mb-4">ZIFX Background</h1>
+    <p class="text-[#C9D1D9] max-w-xl text-lg">
+      Built to provide a smarter, safer, and more accessible pathway to grow wealth through passive income trading.
+    </p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
+  <div>
+    <h2 class="text-3xl font-bold mb-6">The Gap in Modern Investing</h2>
+    <p class="text-[#C9D1D9] mb-4">
+      In today’s fast-moving financial world, many individuals struggle to balance time, commitments,
+      and the increasing complexity of financial markets.
+    </p>
+    <p class="text-[#C9D1D9]">
+      While forex and cryptocurrency markets offer significant opportunities, they often demand
+      technical knowledge, emotional discipline, and continuous market monitoring—resources many
+      investors simply do not have.
+    </p>
+  </div>
+
+  <div>
+    <img src="assets/bg2.png" class="rounded-xl opacity-80" />
+  </div>
+</section>
+
+<!-- WHY ZIFX -->
+<section class="bg-[#0B161A] py-28">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-8">Why ZIFX Was Created</h2>
+    <p class="text-[#C9D1D9] mb-4">
+      ZIFX was created with one clear mission: to bridge the gap between everyday investors and
+      professional trading opportunities.
+    </p>
+    <p class="text-[#C9D1D9] mb-4">
+      Our platform allows individuals to benefit from real trading activity without requiring
+      technical expertise, long hours of analysis, or emotional decision-making.
+    </p>
+    <p class="text-[#C9D1D9]">
+      By combining disciplined trading systems with structured risk control, ZIFX transforms
+      complex markets into a simplified passive income experience.
+    </p>
+  </div>
+</section>
+
+<!-- FOUNDATION -->
+<section class="max-w-7xl mx-auto px-6 py-24">
+  <h2 class="text-3xl font-bold mb-14 text-center">Our Foundation</h2>
+
+  <div class="grid md:grid-cols-3 gap-10">
+    <div class="border border-white/10 rounded-xl p-8">
+      <h3 class="text-xl font-semibold mb-4">Transparency</h3>
+      <p class="text-[#C9D1D9] text-sm">
+        ZIFX operates with clarity and openness. Performance-based fees ensure our interests
+        remain aligned with our investors at all times.
+      </p>
+    </div>
+
+    <div class="border border-white/10 rounded-xl p-8">
+      <h3 class="text-xl font-semibold mb-4">Disciplined Risk Management</h3>
+      <p class="text-[#C9D1D9] text-sm">
+        Capital protection is prioritized through structured position sizing, controlled exposure,
+        and predefined risk limits.
+      </p>
+    </div>
+
+    <div class="border border-white/10 rounded-xl p-8">
+      <h3 class="text-xl font-semibold mb-4">Strategic Trading</h3>
+      <p class="text-[#C9D1D9] text-sm">
+        Our systems are designed to perform consistently across both stable and volatile market
+        conditions, avoiding unnecessary speculation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-16 items-center">
+  <div>
+    <img src="assets/bg3.png" class="rounded-xl opacity-80" />
+  </div>
+
+  <div>
+    <h2 class="text-3xl font-bold mb-6">Sustainable Growth Over Speculation</h2>
+    <p class="text-[#C9D1D9] mb-4">
+      ZIFX focuses on long-term sustainability rather than short-term, high-risk returns.
+    </p>
+    <p class="text-[#C9D1D9]">
+      Our low-to-mid risk approach ensures that capital is deployed responsibly while still
+      capturing market opportunities that support consistent performance.
+    </p>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="bg-[#0B161A] py-28">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6">Built for Everyday Investors</h2>
+    <p class="text-[#C9D1D9] mb-6">
+      ZIFX believes that intelligent wealth-building tools should not be limited to experienced
+      traders or institutions.
+    </p>
+    <p class="text-[#C9D1D9] text-lg">
+      Today, ZIFX stands as a forward-thinking trading platform dedicated to helping investors
+      achieve financial independence—one smart decision at a time.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="site-footer"></div>
+
+<script>
+  async function loadPartial(id, file) {
+    const el = document.getElementById(id);
+    const res = await fetch(file);
+    el.innerHTML = await res.text();
+  }
+  loadPartial("site-header", "partials/header.html");
+  loadPartial("site-footer", "partials/footer.html");
+</script>
+
+</body>
+</html>

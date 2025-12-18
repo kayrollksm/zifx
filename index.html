@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ZIFX — Stop Trading Time for Money</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: Poppins, sans-serif; }
+
+    /* ===== CINEMATIC SLIDER ===== */
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(13,26,30,0.55),
+        rgba(13,26,30,0.85)
+      );
+    }
+  </style>
+</head>
+
+<body class="bg-[#0D1A1E] text-white overflow-x-hidden">
+
+<!-- ================= HEADER + TICKER (JANGAN UBAH) ================= -->
+<header class="fixed top-0 inset-x-0 z-50 bg-[#0D1A1E]/90 backdrop-blur border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
+    <a href="index.html" class="text-xl font-bold text-white">ZIFX</a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm text-[#C9D1D9]">
+      <a href="background.html" class="hover:text-white">ZIFX Background</a>
+      <a href="vision.html" class="hover:text-white">Vision & Mission</a>
+      <a href="how.html" class="hover:text-white">How ZIFX Works</a>
+
+      <div class="relative group">
+        <button class="flex items-center gap-1 hover:text-white">
+          Why Choose ZIFX
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+
+        <div class="absolute left-0 mt-3 w-72 rounded-xl bg-[#121C27] border border-white/10
+                    opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
+          <a href="strategy.html" class="block px-5 py-3 hover:bg-white/5">Trading Strategy Overview</a>
+          <a href="plans.html" class="block px-5 py-3 hover:bg-white/5">Investment Plans</a>
+          <a href="risk.html" class="block px-5 py-3 hover:bg-white/5">Risk Management</a>
+          <a href="faq.html" class="block px-5 py-3 hover:bg-white/5">FAQ</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hidden md:flex gap-4">
+      <a href="login.html" class="text-[#C9D1D9] hover:text-white">Login</a>
+      <a href="register.html"
+         class="bg-[#00A7A6] text-[#0D1A1E] px-4 py-2 rounded-md font-semibold">
+        Get Started
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="fixed top-16 inset-x-0 z-40 bg-[#0B151A] border-b border-white/10">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        { "proName": "FX_IDC:EURUSD", "title": "EUR/USD" },
+        { "proName": "FX_IDC:GBPUSD", "title": "GBP/USD" },
+        { "proName": "FX_IDC:USDJPY", "title": "USD/JPY" },
+        { "proName": "FX_IDC:AUDUSD", "title": "AUD/USD" },
+        { "proName": "BINANCE:BTCUSDT", "title": "BTC/USDT" },
+        { "proName": "BINANCE:ETHUSDT", "title": "ETH/USDT" },
+        { "proName": "BINANCE:BNBUSDT", "title": "BNB/USDT" },
+        { "proName": "OANDA:XAUUSD", "title": "GOLD" },
+        { "proName": "NASDAQ:NDX", "title": "NASDAQ" },
+        { "proName": "SP:SPX", "title": "S&P 500" },
+        { "proName": "DJ:DJI", "title": "DOW JONES" }
+      ],
+      "showSymbolLogo": true,
+      "colorTheme": "dark",
+      "isTransparent": true,
+      "displayMode": "adaptive",
+      "locale": "en"
+    }
+    </script>
+  </div>
+</div>
+
+<!-- SPACER -->
+<div class="h-[120px]"></div>
+
+<!-- ================= HERO SLIDER ================= -->
+<section class="relative min-h-screen overflow-hidden">
+
+  <!-- ⚠️ NAMA FAIL IKUT SERVER -->
+  <div class="slide active" style="background-image:url('assets/Bg1.png')"></div>
+  <div class="slide" style="background-image:url('assets/bg2.png')"></div>
+  <div class="slide" style="background-image:url('assets/bg3.png')"></div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="relative z-10 min-h-screen flex items-center justify-center text-center px-6">
+    <div>
+      <h1 class="text-4xl md:text-5xl font-bold">
+        ZIFX — Stop Trading<br>
+        <span class="text-[#00A7A6]">Time for Money</span>
+      </h1>
+
+      <p class="mt-4 text-lg text-[#C9D1D9]">
+        The Smartest Way to Earn Passive Income
+      </p>
+
+      <p class="mt-6 max-w-xl mx-auto text-[#C9D1D9]">
+        ZIFX is a trusted trading platform where your money works for you,
+        generating consistent returns through professional forex and crypto trading.
+      </p>
+
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="register.html"
+           class="bg-[#00A7A6] text-[#0D1A1E] px-8 py-3 rounded-md font-semibold">
+          GET STARTED NOW
+        </a>
+        <a href="why.html"
+           class="border border-white/20 px-8 py-3 rounded-md">
+          Why ZIFX
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SUB HERO ================= -->
+<section class="py-24 bg-[#0B151A]">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-center">
+
+    <div class="p-8 rounded-xl bg-white/5 border border-white/10">
+      <h3 class="text-xl font-semibold mb-3">Passive Income</h3>
+      <p class="text-[#C9D1D9]">
+        Earn monthly profits without actively trading.
+      </p>
+    </div>
+
+    <div class="p-8 rounded-xl bg-white/5 border border-white/10">
+      <h3 class="text-xl font-semibold mb-3">Professional Strategy</h3>
+      <p class="text-[#C9D1D9]">
+        Disciplined forex & crypto execution.
+      </p>
+    </div>
+
+    <div class="p-8 rounded-xl bg-white/5 border border-white/10">
+      <h3 class="text-xl font-semibold mb-3">Secure & Transparent</h3>
+      <p class="text-[#C9D1D9]">
+        Long-term, risk-managed growth.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<div id="site-footer"></div>
+
+<script>
+  fetch("partials/footer.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("site-footer").innerHTML = html);
+</script>
+
+<!-- SLIDER -->
+<script>
+  const slides = document.querySelectorAll(".slide");
+  let current = 0;
+
+  setInterval(() => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  }, 6000);
+</script>
+
+</body>
+</html>
