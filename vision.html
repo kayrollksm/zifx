@@ -14,36 +14,28 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #0f172a 0%, #020617 60%);
+      background: radial-gradient(circle at top, #0f172a 0%, #020617 65%);
       color: #e5e7eb;
     }
 
-    .vision-wrapper {
+    .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 80px 20px 120px;
+      padding: 90px 20px 120px;
     }
 
-    .vision-header {
+    .page-title {
       text-align: center;
-      margin-bottom: 80px;
+      margin-bottom: 90px;
     }
 
-    .vision-header h1 {
-      font-size: 42px;
+    .page-title h1 {
+      font-size: 44px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       background: linear-gradient(90deg, #38bdf8, #818cf8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-
-    .vision-header p {
-      max-width: 760px;
-      margin: 0 auto;
-      font-size: 18px;
-      line-height: 1.8;
-      color: #cbd5f5;
     }
 
     .section {
@@ -53,7 +45,7 @@
     .section h2 {
       font-size: 30px;
       font-weight: 600;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       color: #f8fafc;
     }
 
@@ -64,34 +56,28 @@
       max-width: 900px;
     }
 
-    .mission-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 32px;
+    .mission-list {
       margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
     }
 
-    .mission-card {
-      background: linear-gradient(180deg, rgba(30,41,59,0.9), rgba(15,23,42,0.9));
+    .mission-item {
+      background: linear-gradient(180deg, rgba(30,41,59,0.9), rgba(15,23,42,0.95));
       border: 1px solid rgba(148,163,184,0.15);
       border-radius: 16px;
       padding: 32px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .mission-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-    }
-
-    .mission-card h3 {
+    .mission-item h3 {
       font-size: 20px;
       font-weight: 600;
       margin-bottom: 14px;
       color: #e0f2fe;
     }
 
-    .mission-card p {
+    .mission-item p {
       font-size: 15.5px;
       line-height: 1.8;
       color: #cbd5f5;
@@ -119,25 +105,20 @@
   <!-- HEADER -->
   <div id="header-placeholder"></div>
 
-  <main class="vision-wrapper">
+  <main class="container">
 
-    <!-- PAGE HEADER -->
-    <div class="vision-header">
+    <!-- TITLE -->
+    <div class="page-title">
       <h1>Vision & Mission</h1>
-      <p>
-        At ZIFX, everything we build is guided by a long-term vision and a clear mission —
-        designed to help individuals move beyond traditional income limitations and
-        experience a smarter way to grow wealth.
-      </p>
     </div>
 
     <!-- VISION -->
     <section class="section">
       <h2>Our Vision</h2>
       <p>
-        To become a leading global platform that empowers individuals to achieve financial
-        freedom by making passive income trading accessible, reliable, and sustainable
-        for everyone.
+        To become a leading global platform that empowers individuals to achieve
+        financial freedom by making passive income trading accessible, reliable,
+        and sustainable for everyone.
       </p>
     </section>
 
@@ -148,30 +129,32 @@
         At ZIFX, our mission is driven by three core principles:
       </p>
 
-      <div class="mission-grid">
+      <div class="mission-list">
 
-        <div class="mission-card">
+        <div class="mission-item">
           <h3>1. Accessibility for All</h3>
           <p>
-            We provide a simplified pathway for individuals—regardless of their background
-            or trading experience—to benefit from opportunities in forex and cryptocurrency
-            markets.
+            We provide a simplified pathway for individuals—regardless of their
+            background or trading experience—to benefit from opportunities in
+            forex and cryptocurrency markets.
           </p>
         </div>
 
-        <div class="mission-card">
+        <div class="mission-item">
           <h3>2. Sustainable and Consistent Growth</h3>
           <p>
-            Our trading approach focuses on disciplined risk management, adaptive strategies,
-            and long-term performance to deliver stable monthly returns.
+            Our trading approach focuses on disciplined risk management,
+            adaptive strategies, and long-term performance to deliver stable
+            monthly returns.
           </p>
         </div>
 
-        <div class="mission-card">
+        <div class="mission-item">
           <h3>3. Trust, Transparency & Reliability</h3>
           <p>
-            We aim to build long-lasting client relationships through open communication,
-            responsible trading practices, and a commitment to safeguarding investor funds.
+            We aim to build long-lasting client relationships through open
+            communication, responsible trading practices, and a commitment
+            to safeguarding investor funds.
           </p>
         </div>
 
@@ -182,8 +165,8 @@
     <div class="closing">
       <p>
         ZIFX continues to push forward with the goal of helping our investors
-        <strong>stop trading time for money</strong> —
-        and start experiencing genuine financial independence.
+        stop trading time for money—and start experiencing genuine financial
+        independence.
       </p>
     </div>
 
@@ -192,7 +175,7 @@
   <!-- FOOTER -->
   <div id="footer-placeholder"></div>
 
-  <!-- PARTIALS LOADER -->
+  <!-- PARTIALS -->
   <script>
     fetch('partials/header.html')
       .then(res => res.text())
