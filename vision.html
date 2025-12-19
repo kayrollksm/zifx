@@ -1,190 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Vision & Mission | ZIFX</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <title>ZIFX — Vision & Mission</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #0f172a 0%, #020617 65%);
-      color: #e5e7eb;
+    body { font-family: Poppins, sans-serif; }
+
+    .glass {
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.06),
+        rgba(255,255,255,0.02)
+      );
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.12);
     }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 90px 20px 120px;
-    }
-
-    .page-title {
-      text-align: center;
-      margin-bottom: 90px;
-    }
-
-    .page-title h1 {
-      font-size: 44px;
-      font-weight: 700;
-      margin-bottom: 18px;
-      background: linear-gradient(90deg, #38bdf8, #818cf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .section {
-      margin-bottom: 80px;
-    }
-
-    .section h2 {
-      font-size: 30px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      color: #f8fafc;
-    }
-
-    .section p {
-      font-size: 17px;
-      line-height: 1.9;
-      color: #d1d5db;
-      max-width: 900px;
-    }
-
-    .mission-list {
-      margin-top: 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-    }
-
-    .mission-item {
-      background: linear-gradient(180deg, rgba(30,41,59,0.9), rgba(15,23,42,0.95));
-      border: 1px solid rgba(148,163,184,0.15);
-      border-radius: 16px;
-      padding: 32px;
-    }
-
-    .mission-item h3 {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 14px;
-      color: #e0f2fe;
-    }
-
-    .mission-item p {
-      font-size: 15.5px;
-      line-height: 1.8;
-      color: #cbd5f5;
-    }
-
-    .closing {
-      margin-top: 100px;
-      padding-top: 40px;
-      border-top: 1px solid rgba(148,163,184,0.15);
-      text-align: center;
-    }
-
-    .closing p {
-      font-size: 18px;
-      line-height: 1.9;
-      max-width: 900px;
-      margin: 0 auto;
-      color: #e5e7eb;
+    .hero-glow::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top,
+        rgba(0,167,166,0.18),
+        transparent 60%);
+      z-index: 0;
     }
   </style>
 </head>
 
-<body>
+<body class="bg-[#0D1A1E] text-white overflow-x-hidden">
 
-  <!-- HEADER -->
-  <div id="header-placeholder"></div>
+<!-- HEADER -->
+<div id="site-header"></div>
 
-  <main class="container">
+<!-- SPACER FOR HEADER + TICKER -->
+<div class="h-[120px]"></div>
 
-    <!-- TITLE -->
-    <div class="page-title">
-      <h1>Vision & Mission</h1>
-    </div>
+<!-- ================= HERO ================= -->
+<section class="relative py-32 text-center overflow-hidden">
+  <div class="hero-glow absolute inset-0"></div>
 
-    <!-- VISION -->
-    <section class="section">
-      <h2>Our Vision</h2>
-      <p>
+  <div class="relative z-10 max-w-4xl mx-auto px-6">
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight">
+      Vision & <span class="text-[#00A7A6]">Mission</span>
+    </h1>
+
+    <p class="mt-6 text-lg text-[#C9D1D9] leading-relaxed">
+      The purpose that defines ZIFX — and the direction that drives us forward.
+    </p>
+  </div>
+</section>
+
+<!-- ================= OUR VISION ================= -->
+<section class="py-28">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+    <div>
+      <h2 class="text-3xl font-bold mb-6">
+        Our <span class="text-[#00A7A6]">Vision</span>
+      </h2>
+
+      <p class="text-[#C9D1D9] text-lg leading-relaxed">
         To become a leading global platform that empowers individuals to achieve
         financial freedom by making passive income trading accessible, reliable,
         and sustainable for everyone.
       </p>
-    </section>
+    </div>
 
-    <!-- MISSION -->
-    <section class="section">
-      <h2>Our Mission</h2>
-      <p>
-        At ZIFX, our mission is driven by three core principles:
-      </p>
-
-      <div class="mission-list">
-
-        <div class="mission-item">
-          <h3>1. Accessibility for All</h3>
-          <p>
-            We provide a simplified pathway for individuals—regardless of their
-            background or trading experience—to benefit from opportunities in
-            forex and cryptocurrency markets.
-          </p>
-        </div>
-
-        <div class="mission-item">
-          <h3>2. Sustainable and Consistent Growth</h3>
-          <p>
-            Our trading approach focuses on disciplined risk management,
-            adaptive strategies, and long-term performance to deliver stable
-            monthly returns.
-          </p>
-        </div>
-
-        <div class="mission-item">
-          <h3>3. Trust, Transparency & Reliability</h3>
-          <p>
-            We aim to build long-lasting client relationships through open
-            communication, responsible trading practices, and a commitment
-            to safeguarding investor funds.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CLOSING -->
-    <div class="closing">
-      <p>
-        ZIFX continues to push forward with the goal of helping our investors
-        stop trading time for money—and start experiencing genuine financial
-        independence.
+    <div class="glass rounded-2xl p-10">
+      <p class="text-[#C9D1D9] leading-relaxed">
+        We envision a future where people no longer trade their time endlessly
+        for money — but instead allow capital, systems, and professional execution
+        to work on their behalf.
       </p>
     </div>
 
-  </main>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <div id="footer-placeholder"></div>
+<!-- ================= OUR MISSION ================= -->
+<section class="py-28 bg-[#0B151A]">
+  <div class="max-w-7xl mx-auto px-6">
 
-  <!-- PARTIALS -->
-  <script>
-    fetch('partials/header.html')
-      .then(res => res.text())
-      .then(html => document.getElementById('header-placeholder').innerHTML = html);
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <h2 class="text-3xl md:text-4xl font-bold">
+        Our <span class="text-[#00A7A6]">Mission</span>
+      </h2>
 
-    fetch('partials/footer.html')
-      .then(res => res.text())
-      .then(html => document.getElementById('footer-placeholder').innerHTML = html);
-  </script>
+      <p class="mt-6 text-[#C9D1D9] text-lg leading-relaxed">
+        At ZIFX, our mission is driven by three core principles that guide every
+        strategy, decision, and system we build.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10">
+
+      <!-- CARD 1 -->
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-xl font-semibold mb-4">
+          1. Accessibility for All
+        </h3>
+        <p class="text-[#C9D1D9] leading-relaxed">
+          We provide a simplified pathway for individuals — regardless of their
+          background or trading experience — to benefit from opportunities in
+          forex and cryptocurrency markets.
+        </p>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-xl font-semibold mb-4">
+          2. Sustainable & Consistent Growth
+        </h3>
+        <p class="text-[#C9D1D9] leading-relaxed">
+          Our trading approach focuses on disciplined risk management, adaptive
+          strategies, and long-term performance to deliver stable monthly returns.
+        </p>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-xl font-semibold mb-4">
+          3. Trust, Transparency & Reliability
+        </h3>
+        <p class="text-[#C9D1D9] leading-relaxed">
+          We build long-lasting client relationships through open communication,
+          responsible trading practices, and a strong commitment to safeguarding
+          investor funds.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING STATEMENT ================= -->
+<section class="py-32 text-center">
+  <div class="max-w-4xl mx-auto px-6">
+    <p class="text-xl text-[#C9D1D9] leading-relaxed">
+      ZIFX continues to push forward with the goal of helping our investors
+      <span class="text-white font-semibold">stop trading time for money</span>
+      — and start experiencing genuine financial independence.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="site-footer"></div>
+
+<!-- LOAD PARTIALS -->
+<script>
+  fetch("partials/header.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("site-header").innerHTML = html);
+
+  fetch("partials/footer.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("site-footer").innerHTML = html);
+</script>
 
 </body>
 </html>
